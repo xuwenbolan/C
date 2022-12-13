@@ -1,0 +1,5 @@
+﻿  实验任务B.cpp
+D:\xwb\C\实验任务B\实验任务B.cpp(9,25): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\xwb\C\实验任务B\实验任务B.cpp(9,43): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\xwb\C\实验任务B\实验任务B.cpp(9,64): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  实验任务B.vcxproj -> D:\xwb\C\实验任务B\x64\Debug\实验任务B.exe
