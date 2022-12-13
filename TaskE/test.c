@@ -6,7 +6,7 @@ int main()
     int **p2;
     int(*p3)[5];
     int *p4[4];
-
+    
     p1 = a[0];
     p2 = p4;
     p3 = a;
