@@ -31,6 +31,7 @@ int main()
 		head = head->next;
 		printf("%s", head->str);
 	}
+    return 0;
 }
 
 
