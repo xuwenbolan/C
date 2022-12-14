@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 typedef struct string
 {
     char *str;
@@ -11,9 +10,47 @@ typedef struct string
 
 int main()
 {
-    t3();
-    return 0;
+    t6();
+	return 0;
 }
+
+void t1(char *a,int n)
+{
+	for (int i = n-1; i >0; i--)
+	{
+		int ifwap = 0;
+		for (int j = 0; j< i; j++)
+		{
+			if (*(a+j)>*(a+j+1))
+			{
+				int t;
+				t = *(a + j);
+				*(a+j) = *(a + j + 1);
+				*(a + j + 1) = t;
+				ifwap = 1;
+			}
+		}
+		if (ifwap == 0)return;
+	}
+}
+
+
+
+
+char *t2(char *a)
+{
+	int i;
+	char *p = a;
+	for (i = 0; *(p+i) != 0; i++)
+	{
+		if (*(p+i) >= 97 && *(p+i) <= 122)
+		{
+			*(p+i) -= 32;
+		}
+	}
+	return p;
+}
+
 
 void t3()
 {
