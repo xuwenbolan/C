@@ -1,8 +1,42 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+//T6
+typedef struct string
+{
+    char *str;
+    struct string *next;
+} LinkList;//采用链表
 
 int main()
 {
-    int a[3][4][5] = {0}, *p1 = a, **p2, (*p3)[5], *p4[4];
+    char temp[50]={0};
+    LinkList *head, *node, *end;
+	head = (LinkList*)malloc(sizeof(LinkList));
+	end = head;
+	while(1)
+    {
+		node = (LinkList*)malloc(sizeof(LinkList));
+        gets(temp);
+        if(temp[0]==0)break;
+        node->str=(char*)malloc(strlen(temp)+1);
+        strcpy(node->str,temp);
+		end->next = node;
+		end = node;
+	}
+	end->next = NULL;
+
+    while (head->next != NULL) 
+    {
+		head = head->next;
+		printf("%s", head->str);
+	}
+    return 0;
+}
+
+/* T4
+ int a[3][4][5] = {0}, *p1 = a, **p2, (*p3)[5], *p4[4];
     for (int i = 1; i <= 60; i++)
         *(p1 + i - 1) = i;
 
@@ -26,4 +60,4 @@ int main()
     }
 
     return 0;
-}
+*/
