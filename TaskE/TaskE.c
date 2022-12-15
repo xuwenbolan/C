@@ -54,7 +54,7 @@ char *t2(char *a)
 
 void t3()
 {
-    printf("当前为第3题！\n");
+    printf("褰撳墠涓虹3棰橈紒\n");
     int a[4][5] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
     int *p1, **p2, (*p3)[5], *p4[4];
     p1 = a[0];
@@ -77,7 +77,7 @@ void t3()
 
 void t4()
 {
-     printf("当前为第4题！\n");
+     printf("褰撳墠涓虹4棰橈紒\n");
     int a[3][4][5] = {0}, *p1 = a, **p2, (*p3)[5], *p4[4];
     for (int i = 1; i <= 60; i++)
         *(p1 + i - 1) = i;
@@ -106,7 +106,7 @@ void t4()
 
 void t6()
 {
-     printf("当前为第6题！\n");
+     printf("褰撳墠涓虹6棰橈紒\n");
     char temp[50] = {0};
     LinkList *head, *node, *end;
     head = (LinkList *)malloc(sizeof(LinkList));
@@ -129,5 +129,6 @@ void t6()
         head = head->next;
         printf("%s", head->str);
     }
+    printf("\n");
     return 0;
 }
