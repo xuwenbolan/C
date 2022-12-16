@@ -10,51 +10,63 @@ typedef struct string
 
 int main()
 {
-    t6();
-	return 0;
+    int a[3][4][5] = {0}, (*p)[5], *p1 = a;
+    for (int i = 1; i <= 60; i++)
+        *(p1 + i - 1) = i;
+    
+    for (int k = 0; k < 3; k++)
+    {
+        p=a[k];
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                printf("%d\n", p[i][j]);
+            }
+        }
+    }
+
+    return 0;
 }
 
-void t1(char *a,int n)
+void t1(char *a, int n)
 {
-	for (int i = n-1; i >0; i--)
-	{
-		int ifwap = 0;
-		for (int j = 0; j< i; j++)
-		{
-			if (*(a+j)>*(a+j+1))
-			{
-				int t;
-				t = *(a + j);
-				*(a+j) = *(a + j + 1);
-				*(a + j + 1) = t;
-				ifwap = 1;
-			}
-		}
-		if (ifwap == 0)return;
-	}
+    for (int i = n - 1; i > 0; i--)
+    {
+        int ifwap = 0;
+        for (int j = 0; j < i; j++)
+        {
+            if (*(a + j) > *(a + j + 1))
+            {
+                int t;
+                t = *(a + j);
+                *(a + j) = *(a + j + 1);
+                *(a + j + 1) = t;
+                ifwap = 1;
+            }
+        }
+        if (ifwap == 0)
+            return;
+    }
 }
-
-
-
 
 char *t2(char *a)
 {
-	int i;
-	char *p = a;
-	for (i = 0; *(p+i) != 0; i++)
-	{
-		if (*(p+i) >= 97 && *(p+i) <= 122)
-		{
-			*(p+i) -= 32;
-		}
-	}
-	return p;
+    int i;
+    char *p = a;
+    for (i = 0; *(p + i) != 0; i++)
+    {
+        if (*(p + i) >= 97 && *(p + i) <= 122)
+        {
+            *(p + i) -= 32;
+        }
+    }
+    return p;
 }
-
 
 void t3()
 {
-    printf("当前为第3题！\n");
+    printf("褰撳墠涓虹3棰橈紒\n");
     int a[4][5] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
     int *p1, **p2, (*p3)[5], *p4[4];
     p1 = a[0];
@@ -77,7 +89,7 @@ void t3()
 
 void t4()
 {
-     printf("当前为第4题！\n");
+    printf("褰撳墠涓虹4棰橈紒\n");
     int a[3][4][5] = {0}, *p1 = a, **p2, (*p3)[5], *p4[4];
     for (int i = 1; i <= 60; i++)
         *(p1 + i - 1) = i;
@@ -106,7 +118,7 @@ void t4()
 
 void t6()
 {
-     printf("当前为第6题！\n");
+    printf("褰撳墠涓虹6棰橈紒\n");
     char temp[50] = {0};
     LinkList *head, *node, *end;
     head = (LinkList *)malloc(sizeof(LinkList));
