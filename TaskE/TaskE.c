@@ -141,5 +141,6 @@ void t6()
         head = head->next;
         printf("%s", head->str);
     }
+    printf("\n");
     return 0;
 }
