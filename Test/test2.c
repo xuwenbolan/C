@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+//面值问题10，5，1
 int main()
 {
     int n=5;
@@ -9,7 +10,7 @@ int main()
         k=(n-i*10)/5;
         for (j=0;j<=k;j++)
         {
-        t++;
+            t++;
         }
     }
     printf("%d",t);
