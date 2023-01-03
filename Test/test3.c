@@ -3,7 +3,8 @@
 
 int main()
 {
-    char a[6]={'a','b','c','d','e'};
+    char a[10]={0},b[10]={0};
+    scanf("%s %s",a,b);
     printf("%d",strlen(a));
     //printf("%d",p-a);
     // char *p1, *p2; //定义char型的指针：p1,p2
