@@ -7,9 +7,9 @@
 
 typedef struct _Goods // 货物的结构体
 {
-    char name[10];     // 货物名称
+    char name[20];     // 货物名称
     char date[11];     // 入库日期
-    char place[25];    // 保存位置
+    char place[25];    // 入库位置
     char sup_unit[20]; // 供货单位
     char phone[12];    // 厂家电话
     int num;           // 货物数量
@@ -45,7 +45,7 @@ A_point *A_head = NULL; // 创建管理员链表头指针
 
 void Goods_read();
 void Goods_write(Goods temp);
-void Add_point(Goods point);
+void Add_Gpoint(Goods point);
 void Add_Goods();
 void show_Goods();
 char* get_time(char *des);

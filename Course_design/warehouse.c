@@ -8,7 +8,7 @@ int main()
     return 0;
 }
 
-void Add_point(Goods point) // 添加一个节点
+void Add_Gpoint(Goods point) // 添加一个货物节点
 {
     G_Point *node = (G_Point *)malloc(sizeof(G_Point));
     node->goods = point;
@@ -28,7 +28,7 @@ void Goods_read() // 读取货物文件
         fopen_s(&fp, "Goods_data.txt", "w");
     while (fscanf(fp, "%s %s %s %s %s %d %f", temp.name, temp.date, temp.place, temp.sup_unit, temp.phone, &temp.num, &temp.price) != EOF)
     {
-        Add_point(temp);
+        Add_Gpoint(temp);
     }
     fclose(fp);
 }
@@ -46,7 +46,7 @@ void show_Goods() // 显示货物
     G_Point *temp = G_head;
     printf("—————————————————————————————————————————————————————————\n");
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
-    printf("| %-10s | %-10s | %-25s | %-20s | %-11s | %-8s | %-8s |\n", "货物名称", "入库日期", "保存位置", "供货单位", "厂家电话", "货物数量", "货物价格");
+    printf("| %-10s | %-10s | %-25s | %-20s | %-11s | %-8s | %-8s |\n", "货物名称", "入库日期", "入库位置", "供货单位", "厂家电话", "货物数量", "货物价格");
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
     printf("—————————————————————————————————————————————————————————\n");
     while (temp)
@@ -63,7 +63,7 @@ void Add_Goods() // 添加货物
     printf("请输入货物名称：\n");
     scanf("%s", temp.name);
     get_time(temp.date);
-    printf("请输入保存位置：\n");
+    printf("请输入入库位置：\n");
     scanf("%s", temp.place);
     printf("请输入供货单位：\n");
     scanf("%s", temp.sup_unit);
@@ -74,7 +74,7 @@ void Add_Goods() // 添加货物
     printf("请输入货物价格：\n");
     scanf("%f", &temp.price);
     system("cls");
-    Add_point(temp);
+    Add_Gpoint(temp);
     Goods_write(temp);
 }
 
