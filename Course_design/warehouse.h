@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-// #ifndef GBK
-// #define GBK
-// #endif 
+#include <windows.h>
+#include <time.h>
 
 //结构体声明
 
@@ -11,9 +9,9 @@ typedef struct _Goods // 货物的结构体
 {
     char name[10];     // 货物名称
     char date[11];     // 入库日期
-    char place[20];    // 保存位置
-    char sup_unit[10]; // 供货单位
-    char phone[15];    // 厂家电话
+    char place[25];    // 保存位置
+    char sup_unit[20]; // 供货单位
+    char phone[12];    // 厂家电话
     int num;           // 货物数量
     float price;         // 货物价格
 } Goods;
@@ -45,5 +43,9 @@ A_point *A_head = NULL; // 创建管理员链表头指针
 
 //函数声明
 
-void Goods_read(G_Point* headpoint);
-void Add_point(G_Point* headpoint,Goods point);
+void Goods_read();
+void Goods_write(Goods temp);
+void Add_point(Goods point);
+void Add_Goods();
+void show_Goods();
+char* get_time(char *des);
