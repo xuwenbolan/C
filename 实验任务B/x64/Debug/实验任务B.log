@@ -1,2 +1,4 @@
 ﻿  实验任务B.cpp
+D:\xwb\C\实验任务B\实验任务B.cpp(15,16): warning C4838: 从“int”转换到“SHORT”需要收缩转换
+D:\xwb\C\实验任务B\实验任务B.cpp(15,18): warning C4838: 从“int”转换到“SHORT”需要收缩转换
   实验任务B.vcxproj -> D:\xwb\C\实验任务B\x64\Debug\实验任务B.exe

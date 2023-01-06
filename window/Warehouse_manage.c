@@ -311,7 +311,7 @@ a1 *in() {
 	head->next=NULL;
 	p=(a1 *)malloc(sizeof(a1));
 	int m=0;
-	while(fread(p,sizeof(a1),1,z)==1) { //读取文件信息。fread函数若执行成功，那么返回值为count（数据项的个数）
+	while(fread(p,sizeof(a1),1,z)) { //读取文件信息。fread函数若执行成功，那么返回值为count（数据项的个数）
 		m=m+1;
 		p->next=NULL;//输出
 		printf("编号:%d\t名称:%s\t价格%f\t数量:%d\t\n",p->number, p->name,p->price,p->count);
@@ -376,7 +376,7 @@ int main() {
 	int number;
 	page();//调用页面函数
 	getchar();//按enter下一步
-	if((z=fopen("货物信息.txt","r"))!=NULL) {
+	if((z=fopen("货物信息.txt","w"))!=NULL) {
 		head=in();//读入
 	} else {
 		printf("文件中没有保存货物信息！\n");

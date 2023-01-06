@@ -1,11 +1,18 @@
 #include <stdio.h>
 #include <string.h>
 
+
+struct abc
+{
+    int num;
+}a;
+
+
 int main()
 {
-    char a[10]={0},b[10]={0};
-    scanf("%s %s",a,b);
-    printf("%d",strlen(a));
+    a.num=1;
+    if(a.num==12)printf("1111");
+    else printf("2222");
     //printf("%d",p-a);
     // char *p1, *p2; //定义char型的指针：p1,p2
     // int a = -1;    //定义了int型变量a：FF FF FF FF
