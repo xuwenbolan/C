@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <time.h>
+#include <conio.h>
 
 //结构体声明
 
@@ -18,6 +19,7 @@ typedef struct _Goods // 货物的结构体
 
 typedef struct Goods_Point // 定义货物链表节点
 {
+    struct Goods_Point *last;
     Goods goods;
     struct Goods_Point *next;
 } G_Point;
@@ -44,8 +46,12 @@ A_point *A_head = NULL; // 创建管理员链表头指针
 //函数声明
 
 void Goods_read();
-void Goods_write(Goods temp);
+void Goods_write();
 void Add_Gpoint(Goods point);
 void Add_Goods();
 void show_Goods();
 char* get_time(char *des);
+void Find_Goods();
+G_Point* Find_tar(char* target);
+void Pick_Goods(G_Point* temp);
+void Change_Goods(G_Point* temp,int kind);
