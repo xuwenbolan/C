@@ -4,6 +4,15 @@
 #include <time.h>
 #include <conio.h>
 
+//宏定义
+#define insert_goods 0
+#define input_goods 1
+#define out_goods 2
+#define pick_goods 3
+#define delete_goods 4
+#define view_goods 5
+#define sort_goods 6
+
 //结构体声明
 
 typedef struct _Goods // 货物的结构体
@@ -25,6 +34,7 @@ typedef struct Goods_Point // 定义货物链表节点
 } G_Point;
 
 G_Point *G_head = NULL; // 创建货物链表头指针
+G_Point *G_end = NULL;  // 创建货物链表尾指针
 
 typedef struct _Admin // 管理员的结构体
 {
@@ -45,13 +55,16 @@ A_point *A_head = NULL; // 创建管理员链表头指针
 
 //函数声明
 
-void Goods_read();
-void Goods_write();
-void Add_Gpoint(Goods point);
-void Add_Goods();
-void show_Goods();
-char* get_time(char *des);
-void Find_Goods();
-G_Point* Find_tar(char* target);
-void Pick_Goods(G_Point* temp);
-void Change_Goods(G_Point* temp,int kind);
+void Goods_read(); // 读取货物文件
+void Goods_write(); // 写入货物文件
+void Add_Gpoint(Goods point); // 添加一个货物节点
+void Add_Goods(); // 添加货物
+void show_Goods(G_Point *node); // 显示货物
+char* get_time(char *des); // 获取当前时间
+int Find_Goods(char *target); // 查找货物
+G_Point* Find_tar(char* target); // 查找目标
+void Pick_Goods(G_Point* temp); // 选择货物
+void Change_Goods(G_Point* temp,int kind); // 更改货物信息
+void Operate_Menu(G_Point *node); // 操作菜单
+void Select(int kind,G_Point* node); //操作选择
+void Sort_Goods();
