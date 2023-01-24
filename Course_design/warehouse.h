@@ -38,27 +38,29 @@ G_Point *G_end = NULL;  // 创建货物链表尾指针
 
 typedef struct _Admin // 管理员的结构体
 {
-    char name[5];      // 管理员名字
-    char phone[15];    // 管理员电话/登录账号
+    char name[10];      // 管理员名字
+    char phone[15];    // 管理员电话
     char password[20]; // 登录密码
-    char unit[10];     // 所在单位
+    char unit[20];     // 所在单位
 } Admin;
 
 typedef struct Admin_point // 定义管理员链表节点
 {
+    struct Admin_point *last;
     Admin admin;
     struct Admin_point *next;
-} A_point;
+} A_Point;
 
-A_point *A_head = NULL; // 创建管理员链表头指针
+A_Point *A_head = NULL; // 创建管理员链表头指针
+A_Point *A_end  = NULL; // 创建管理员链表头指针
 
 
 //函数声明
 
 void Goods_read(); // 读取货物文件
 void Goods_write(); // 写入货物文件
-void Add_Gpoint(Goods point); // 添加一个货物节点
-void Add_Goods(); // 添加货物
+void Add_Gpoint(Goods point); // 添加一个货物节点c
+Goods Add_Goods(); // 添加货物
 void show_Goods(G_Point *node); // 显示货物
 char* get_time(char *des); // 获取当前时间
 int Find_Goods(char *target); // 查找货物
@@ -68,3 +70,10 @@ void Change_Goods(G_Point* temp,int kind); // 更改货物信息
 void Operate_Menu(G_Point *node); // 操作菜单
 void Select(int kind,G_Point* node); //操作选择
 void Sort_Goods();
+void Insert_Point(G_Point* node,Goods temp); //插入一个货物节点
+void HideCursor(); //隐藏光标
+void gotoxy(int x, int y);  //显示字符的位置
+void Begin(); //初始化界面
+void Sign_in(); //登录界面
+void Admin_read(); //读取管理员信息
+void Add_Apoint(Admin node); //添加管理员列表节点
