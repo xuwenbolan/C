@@ -51,7 +51,7 @@ DWORD WINAPI ScanThread (LPVOID port)
         return -1;
     }
     servAddr.sin_family = AF_INET;
-    servAddr.sin_addr.S_un.S_addr = inet_addr ("113.100.155.155");
+    servAddr.sin_addr.S_un.S_addr = inet_addr ("123.125.115.110");
     //setsockopt (sHost, IPPROTO_TCP, TCP_MAXRT, (char *)&Timeout, sizeof (Timeout));//设置快速扫描
     servAddr.sin_port = htons (Port);
     retval = connect (sHost, (LPSOCKADDR)&servAddr, sizeof (servAddr));//lpsockaddr is 环路地址
