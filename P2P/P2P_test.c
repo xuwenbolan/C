@@ -8,6 +8,7 @@
 #include <netinet/in.h>
 #include <sys/types.h>
 #include <arpa/inet.h>
+#define MB 1024*1024
 
 void file_server()
 {
@@ -15,7 +16,7 @@ void file_server()
     struct sockaddr_in sockAddr, cltAddr;
     socklen_t addrLen;
     int size, netSize;
-    char buf[1024]={0};
+    char buf[MB]={0};
  
     //创建tcp socket
     if((skfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
@@ -56,26 +57,35 @@ void file_server()
         printf("accept success!\n");
     }
     int r_size = 0;
-    int sum = 0;
+    int sum = 0,fsize;
     char filename[50]={0};
+    char filesize[20]={0};
+    char s_size[6];
     read(cnfd,filename,50);
     printf("%s\n",filename);
-    FILE *pf = fopen(filename,"rb+");
-    send(cnfd,"OK",2,0);
+    write(cnfd, "success", 8);
+    FILE *pf = fopen(filename,"wb");
+    read(cnfd,filesize,20);
+    write(cnfd, "success", 8);
+    sscanf(filesize,"%d",&fsize);
+    printf("%s\n",filesize);
     do
 	{
 		memset(buf, 0, sizeof(buf));
 		r_size = read(cnfd, buf, sizeof(buf));
-		// usleep(10000);	
-		write(cnfd, "success", 8);
+        // sprintf(s_size,"%d",r_size);
+        
+        fwrite(buf,sizeof(char),MB,pf);
+		// write(cnfd, "success", 8);
         sum+=r_size;
-	} while (r_size == 1024);
+        printf("%.0f%%\n",((float)sum/(float)fsize)*100);
+	} while (sum<fsize);
 
     printf("%d\n",sum);
     // char *str = "Hello World!";
     // send(cnfd, str, strlen(str)+sizeof(char),0);
-    close(cnfd);
     close(skfd);
+    close(cnfd);
 }
 
 int main()
