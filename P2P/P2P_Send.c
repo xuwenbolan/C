@@ -3,6 +3,7 @@
 #include <WinSock2.h>
 #include <sys/stat.h>
 #pragma comment(lib, "ws2_32.lib")
+#define MB 1024*1024 //*1024*1024
 
 int file_size(char *filename)
 {
@@ -14,7 +15,7 @@ int file_size(char *filename)
 
 int main()
 {
-    char *filename = "test.pdf";
+    char *filename = "test.zip";
     // 初始化DLL
     WSADATA wsaData;
     WSAStartup(MAKEWORD(2, 2), &wsaData);
@@ -24,7 +25,7 @@ int main()
     struct sockaddr_in sockAddr;
     memset(&sockAddr, 0, sizeof(sockAddr)); // 每个字节都用0填充
     sockAddr.sin_family = PF_INET;
-    sockAddr.sin_addr.s_addr = inet_addr("43.138.161.163");
+    sockAddr.sin_addr.s_addr = inet_addr("192.168.101.155"); // 43.138.161.163
     sockAddr.sin_port = htons(23334);
     connect(sock, (SOCKADDR *)&sockAddr, sizeof(SOCKADDR));
     // //接收服务器传回的数据
@@ -34,33 +35,28 @@ int main()
     // printf("Message form server: %s\n", szBuffer);
     // char *buf = "hello";
     // send(sock,buf,6,0);
-    char buf[1024] = {0};
+    char buf[MB] = {0};
+    char buf2[20] = {0};
+    char fsize[20]={0};
     int filesize = file_size(filename);
     FILE *fp = fopen(filename, "rb");
     send(sock, filename, sizeof(filename), 0);
-    recv(sock, buf, 1024, 0);
-    if (strncmp(buf, "OK", 2) == 0)
-        printf("%d\n", filesize);
-    // if(strncmp(buf, "OK", 2) == 0) send(sock,filesize,sizeof(filesize),0);
-    int size = 0;
-    int sum=0;
-    char buf2[50]={0};
-    do
+    recv(sock, buf2, sizeof(buf2),0);
+	if(strncmp(buf2,"success",8) == 0)memset(buf2, 0, sizeof(buf2));
+    sprintf(fsize,"%d",filesize);
+    send(sock, fsize,strlen(fsize),0);
+    recv(sock, buf2, sizeof(buf2),0);
+    if(strncmp(buf2,"success",8) == 0)printf("----------\n");
+    int size = 1;
+    int sum = 0;
+    while (size > 0)
     {
-        memset(buf2, 0, sizeof(buf));
-        size = fread(buf,sizeof(char),1024,fp);
-
+        memset(buf, 0, sizeof(buf));
+        size = fread(buf,sizeof(char),MB,fp);
+        // printf("%d\n",size);
         send(sock, buf,size,0);
-        recv(sock, buf2, sizeof(buf2),0);
-        if (strncmp(buf2, "success", 10) == 0)sum+=size;
-        else continue;
-
-    } while (size == 1024);
-    // int size = fread(buf,sizeof(char),1024,fp);
-    // send(sock,buf,strlen(buf),0);
+    }
     // int filesize = file_size(filename);
-    // write(sock,buf,file_size+1);
-    printf("%d\n",sum);
     system("pause");
     // 关闭套接字
     closesocket(sock);
