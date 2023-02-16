@@ -1,4 +1,4 @@
-#include "Port_Scan.h"
+#include "Port_Scan_linux.h"
 
 char sumBuf[TCP_HEADER_LEN + sizeof(struct psdHeader)];
 

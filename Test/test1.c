@@ -2,7 +2,6 @@
 //冒泡排序
 int main()
 {
-    char c='z';
     int n=11;
     int a[]={1,2,3,1,2,2,7,4,9,3,5};
     for(int i=0;a[i]!=0;i++)printf("%d ",a[i]);

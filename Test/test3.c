@@ -10,9 +10,11 @@ struct abc
 
 int main()
 {
-    a.num=1;
-    if(a.num==12)printf("1111");
-    else printf("2222");
+    char str[5] = "hello";
+    printf("%s",str);
+    // a.num=1;
+    // if(a.num==12)printf("1111");
+    // else printf("2222");
     //printf("%d",p-a);
     // char *p1, *p2; //定义char型的指针：p1,p2
     // int a = -1;    //定义了int型变量a：FF FF FF FF
