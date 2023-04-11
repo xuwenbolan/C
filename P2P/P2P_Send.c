@@ -25,7 +25,7 @@ int main()
     struct sockaddr_in sockAddr;
     memset(&sockAddr, 0, sizeof(sockAddr)); // 每个字节都用0填充
     sockAddr.sin_family = PF_INET;
-    sockAddr.sin_addr.s_addr = inet_addr("192.168.101.155"); // 43.138.161.163
+    sockAddr.sin_addr.s_addr = inet_addr("43.138.161.163"); // 43.138.161.163
     sockAddr.sin_port = htons(23334);
     connect(sock, (SOCKADDR *)&sockAddr, sizeof(SOCKADDR));
     // //接收服务器传回的数据
@@ -56,7 +56,6 @@ int main()
         // printf("%d\n",size);
         send(sock, buf,size,0);
     }
-    // int filesize = file_size(filename);
     system("pause");
     // 关闭套接字
     closesocket(sock);
