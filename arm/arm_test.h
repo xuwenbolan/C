@@ -32,3 +32,4 @@ int cal_flag=1;
 void inti_ROB(void);
 int mo_3(float x, float y, float z, float Gamma);
 int ROB_GO_STR(angle *state);
+int mo_2(float x, float y);
