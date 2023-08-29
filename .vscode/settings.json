@@ -14,7 +14,13 @@
         "stdio.h": "c",
         "arm_test.h": "c",
         "cmath": "c",
-        "*.tcc": "c"
+        "*.tcc": "c",
+        "time.h": "c",
+        "stat.h": "c",
+        "thread_pool.h": "c",
+        "pthread.h": "c",
+        "stdint.h": "c",
+        "stdlib.h": "c"
     },
     "cmake.configureOnOpen": false, // 格式化时调整include的顺序（按字母排序）
 }

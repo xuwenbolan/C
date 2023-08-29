@@ -13,7 +13,6 @@
 #include "../Example/Thread_Pool.h"
 //#include <python3.10/Python.h>
 
-#define MAX_SIZE 1024
 
 typedef struct
 {
