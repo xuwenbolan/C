@@ -31,7 +31,8 @@ int main()
 	// float b = sin(30*M_PI/180);
 	// printf("%f", (180/M_PI)*atan(1));
 
-	mo_2(1, 37);
+	mo_2(0.18, 0.25);
+	//mo_2(0.002, 0.30);
 }
 
 void inti_ROB(void)
@@ -56,15 +57,27 @@ void inti_ROB(void)
 
 int mo_2(float x, float y)
 {
-	float a1=10.45f,a2=9.85f,a3=17.41f;
-	//float a1 = 2, a2 = 1, a3 = 1;
-	float t1 = 0.0, t2 = 0.0, t3 = 0.0;
-	float c = (1 - (a1 + a2) * (a1 + a2) - x * x - y * y) / (2 * (a1 + a2));
-	printf("%f", c);
-	t1 = (180 / M_PI) * 2 * atan((x - sqrt(x * x + y * y - c * c)) / (c - y));
-	if(t1<0)t1 = (180 / M_PI) * 2 * atan((x + sqrt(x * x + y * y - c * c)) / (c - y));
-	t3 = 90 + t1 - (180 / M_PI)*asin((y - (a1 + a2) * cos(t1 * M_PI / 180)) / a1);
-	//printf("%f %f\n", t1,t3);
+	float a1=0.1045f,a2=0.0985f,a3=0.1741f;
+	float t1 = 0, t2 = 0, t3 = 0,c=0;
+	if(ROB_ARM.theta1+ROB_ARM.theta3>=90)return 0;
+	float state = x - a3 * cos((90 - ROB_ARM.theta3) * M_PI / 180);
+	printf("%f\n",state);
+	if(state<=0|ROB_ARM.theta3==0)
+	{
+		
+		c = (a3*a3 - (a1 + a2) * (a1 + a2) - x * x - y * y) / (2 * (a1 + a2));
+		t1 = (180 / M_PI) * 2 * atan((x - sqrt(x * x + y * y - c * c)) / (c - y));
+		if(t1<0)t1 = (180 / M_PI) * 2 * atan((x + sqrt(x * x + y * y - c * c)) / (c - y));
+		t3 = 90 + t1 - (180 / M_PI)*asin((y - (a1 + a2) * cos(t1 * M_PI / 180)) / a3);
+	}
+	else
+	{
+		c = (a3*a3 - (a1 + a2) * (a1 + a2) - x * x - y * y) / (-2 * (a1 + a2));
+		t1 = (180 / M_PI) * 2 * atan((x - sqrt(x * x + y * y - c * c)) / (c + y));
+		if(t1<0)t1 = (180 / M_PI) * 2 * atan((x + sqrt(x * x + y * y - c * c)) / (c + y));
+		t3 = 90 - t1 - (180 / M_PI)*asin((y - (a1 + a2) * cos(t1 * M_PI / 180)) / a3);
+	}
+	printf("%f %f\n", t1,t3);
 }
 
 int mo_3(float x, float y, float z, float Gamma)
