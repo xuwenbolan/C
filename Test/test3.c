@@ -5,13 +5,24 @@
 struct abc
 {
     int num;
-}a;
+}ab;
 
+void swap(int a,int b)
+{
+    int t=a;
+    a = b;
+    b = t;
+}
 
 int main()
 {
-    char str[5] = "hello";
-    printf("%s",str);
+    int a =178;
+    int b = 132;
+    // a <<= 1;
+    swap(a, b);
+    printf("%d %d\n", a,b);
+    // char str[5] = "hello";
+    // printf("%s",str);
     // a.num=1;
     // if(a.num==12)printf("1111");
     // else printf("2222");
